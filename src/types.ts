@@ -1,0 +1,7 @@
+import {RESULTS} from 'react-native-permissions';
+
+export type TUsePermissionsReturnType = {
+  isError?: boolean;
+  type: (typeof RESULTS)[keyof typeof RESULTS];
+  errorMessage?: string;
+};
