@@ -21,6 +21,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 ios/.xcode.env.local
+PodFile.lock
 
 # Android/IntelliJ
 #
@@ -33,6 +34,7 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
+yarn.lock
 
 # node.js
 #
