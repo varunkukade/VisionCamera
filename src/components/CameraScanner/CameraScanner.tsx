@@ -12,11 +12,7 @@ import {
 import {useIsFocused} from '@react-navigation/native';
 import {getWindowHeight, getWindowWidth, isIos} from '../../helpers';
 import {useAppStateListener} from '../../hooks/useAppStateListener';
-
-export interface ICameraScannerProps {
-  setIsCameraShown: (value: boolean) => void;
-  onReadCode: (value: string) => void;
-}
+import {ICameraScannerProps} from '../../types';
 
 export const CameraScanner = ({
   setIsCameraShown,

@@ -5,3 +5,8 @@ export type TUsePermissionsReturnType = {
   type: (typeof RESULTS)[keyof typeof RESULTS];
   errorMessage?: string;
 };
+
+export interface ICameraScannerProps {
+  setIsCameraShown: (value: boolean) => void;
+  onReadCode: (value: string) => void;
+}
