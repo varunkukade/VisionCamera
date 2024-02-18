@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {Alert, Modal, SafeAreaView} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {Alert, Modal, SafeAreaView, View} from 'react-native';
 
 import {styles} from './CameraScanner.styles';
 import {RNHoleView} from 'react-native-hole-view';
@@ -52,9 +52,9 @@ export const CameraScanner = ({
     };
   }, [isCameraInitialized]);
 
-  const onInitialized = useCallback(() => {
+  const onInitialized = () => {
     setIsCameraInitialized(true);
-  }, []);
+  };
 
   const codeScanner = useCodeScanner({
     codeTypes: ['qr'],
@@ -73,9 +73,9 @@ export const CameraScanner = ({
     setIsCameraShown(false);
   };
 
-  const onError = useCallback((error: CameraRuntimeError) => {
+  const onError = (error: CameraRuntimeError) => {
     Alert.alert('Error!', error.message);
-  }, []);
+  };
 
   if (device == null) {
     Alert.alert('Error!', 'Camera could not be started');
@@ -85,45 +85,7 @@ export const CameraScanner = ({
     return (
       <SafeAreaView style={styles.safeArea}>
         <Modal presentationStyle="fullScreen" animationType="slide">
-          {/* <View style={[styles.cameraControls, {backgroundColor: undefined}]}>
-            <Ripple
-              rippleColor={colors.primary.main as string}
-              rippleContainerBorderRadius={45}
-              onPress={onCrossClick}
-              style={styles.icon}>
-              <BackButton
-                {...testIDsProps(testIDs.CloseButtonID)}
-                type="cross"
-                color="tertiary"
-                onPress={onCrossClick}
-                rightIntent={false}
-                leftIntent={false}
-              />
-            </Ripple>
-            <Ripple
-              onPress={() =>
-                setFlash(prevValue => (prevValue === 'on' ? 'off' : 'on'))
-              }
-              rippleColor={
-                flash === 'off'
-                  ? (colors.secondary.main as string)
-                  : (colors.primary.main as string)
-              }
-              rippleContainerBorderRadius={45}
-              style={[
-                styles.icon,
-                {
-                  backgroundColor:
-                    flash === 'off' ? undefined : colors.secondary.main,
-                },
-              ]}>
-              <Icon
-                color="tertiary"
-                source={flash === 'off' ? IconTorchOn : IconTorchOff}
-                size={'lg2'}
-              />
-            </Ripple>
-          </View> */}
+          <View style={[styles.cameraControls, {backgroundColor: undefined}]} />
           <Camera
             torch={flash}
             onInitialized={onInitialized}
